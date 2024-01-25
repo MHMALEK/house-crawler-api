@@ -6,7 +6,7 @@ from flask import (
 
 from .services import fetch_city_names_service, check_houses_service, fetch_city_list_and_all_available_houses, generateEmailBodyFromResult
 
-from ...email_bot import service as email_services
+from email_bot import service as email_services
 
 import logging
 

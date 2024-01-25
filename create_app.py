@@ -1,8 +1,9 @@
 import os
 
 from flask import Flask
-    
-from .database import db
+from database import db
+import auth
+from check_houses.h2s import holland2stay
 
 
 def create_app(test_config=None):
@@ -29,9 +30,6 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from . import auth
-    from .check_houses.h2s import holland2stay
-    
     app.register_blueprint(auth.bp)
     app.register_blueprint(holland2stay.bp)
 
@@ -39,6 +37,5 @@ def create_app(test_config=None):
     with app.app_context():
         db.init_app(app)
         db.create_all()
-        
 
     return app
