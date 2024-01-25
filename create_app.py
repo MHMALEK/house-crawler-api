@@ -1,9 +1,10 @@
 import os
 
 from flask import Flask
-from database import db
+from database import init_db
 import auth
 from check_houses.h2s import holland2stay
+from database import connection_string, shutdown_session
 
 
 def create_app(test_config=None):
@@ -12,10 +13,8 @@ def create_app(test_config=None):
 
     app.config.from_mapping(
         SECRET_KEY="dev",
-        DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
-        SQLALCHEMY_DATABASE_URI="sqlite:////" + os.path.join(app.instance_path, "flaskr.sqlite"),
+        SQLALCHEMY_DATABASE_URI=connection_string,
     )
-    
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -33,9 +32,10 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(holland2stay.bp)
 
+    app.teardown_appcontext(shutdown_session)
+
     # start the telegram bot
     with app.app_context():
-        db.init_app(app)
-        db.create_all()
+        init_db()
 
     return app
