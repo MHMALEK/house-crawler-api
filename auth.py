@@ -47,10 +47,14 @@ def get_single_user(chat_id):
 
 @bp.route("/<chat_id>", methods=["DELETE"])
 def remove_user(chat_id):
+    print("Endpoint reached")  # Add this line
+    print(chat_id)
     user = User.query.filter_by(chat_id=str(chat_id)).first()
+    print("sdasd", user)
+
     if user is not None:
-        db_session.session.delete(user)
-        db_session.session.commit()
+        db_session.delete(user)
+        db_session.commit()
         return jsonify({"message": "User removed successfully!"}), 200
     else:
         return jsonify({"error": "User not found"}), 404

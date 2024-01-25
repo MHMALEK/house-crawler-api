@@ -8,6 +8,7 @@ from database import connection_string, shutdown_session
 
 
 def create_app(test_config=None):
+    print(create_app, 'asdasds')
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
 
