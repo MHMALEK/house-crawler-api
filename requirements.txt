@@ -13,6 +13,7 @@ fake-useragent==1.4.0
 firebase-admin==6.4.0
 Flask==3.0.1
 Flask-Migrate==2.5.2
+Flask-SQLAlchemy==2.4.1
 google-api-core==2.15.0
 google-api-python-client==2.115.0
 google-auth==2.27.0
@@ -39,15 +40,18 @@ msgpack==1.0.7
 packaging==23.2
 proto-plus==1.23.0
 protobuf==4.25.2
+psycopg2==2.8.4
 psycopg2-binary==2.9.9
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
 pycparser==2.21
 PyJWT==2.8.0
 pyparsing==3.1.1
+python-dotenv==1.0.1
 requests==2.31.0
 rsa==4.9
 soupsieve==2.5
+SQLAlchemy==2.0.25
 typing_extensions==4.9.0
 uritemplate==4.1.1
 urllib3==2.1.0
