@@ -1,23 +1,29 @@
 import os
+import base64
+import json
 import firebase_admin
 from firebase_admin import credentials
 
 
 def init_firebase():
-    cred = credentials.Certificate(
-        {
-            "type": os.getenv("TYPE"),
-            "project_id": os.getenv("PROJECT_ID"),
-            "private_key_id": os.getenv("PRIVATE_KEY_ID"),
-            "private_key": os.getenv("PRIVATE_KEY").replace('\\n', '\n'),
-            "client_email": os.getenv("CLIENT_EMAIL"),
-            "client_id": os.getenv("CLIENT_ID"),
-            "auth_uri": os.getenv("AUTH_URI"),
-            "token_uri": os.getenv("TOKEN_URI"),
-            "auth_provider_x509_cert_url": os.getenv("AUTH_PROVIDER_X509_CERT_URL"),
-            "client_x509_cert_url": os.getenv("CLIENT_X509_CERT_URL"),
-        }
+    # Get the base64 encoded service account key from the environment variable
+    base64_service_account_key = os.environ.get("FIREBASE_SERVICE_ACCOUNT_BASE64")
+
+    # Decode the service account key
+    service_account_key = base64.b64decode(base64_service_account_key).decode("utf-8")
+
+    # Convert the service account key to a dictionary
+    service_account_info = json.loads(service_account_key)
+
+    service_account_info["private_key"] = service_account_info["private_key"].replace(
+        "\\n", "\n"
     )
+
+    print(service_account_info)
+
+    # Use the service account key to authenticate
+    cred = credentials.Certificate(service_account_info)
+
     firebase_admin.initialize_app(
         cred,
         {
