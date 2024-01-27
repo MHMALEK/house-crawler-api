@@ -4,7 +4,7 @@ from firebase_admin import credentials
 
 
 def init_firebase():
-    print(os.getenv("PRIVATE_KEY"))
+    print("malek:", os.getenv("PRIVATE_KEY"))
     cred = credentials.Certificate(
         {
             "type": os.getenv("TYPE"),
