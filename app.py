@@ -1,5 +1,8 @@
 from flask import Flask
 from create_app import create_app
+from firebase import init_firebase
+
+init_firebase()
 
 app = create_app()
 
