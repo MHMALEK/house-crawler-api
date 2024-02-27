@@ -1,4 +1,4 @@
-from houses_site_crawler.pararius.service import crawl_pararius
+from app.houses_site_crawler.pararius.service import crawl_pararius
 
 search_params = {
     "location": "amsterdam",

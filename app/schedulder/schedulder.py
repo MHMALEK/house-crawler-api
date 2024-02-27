@@ -1,6 +1,6 @@
 import schedule
 import time
-from ...houses_site_crawler.holland2stay.services import fetch_all_cities_results, fetch_city_names_service
+from app.houses_site_crawler.holland2stay.services import fetch_all_cities_results, fetch_city_names_service
 
 
 

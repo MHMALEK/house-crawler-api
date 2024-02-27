@@ -3,9 +3,8 @@ from app.main import create_app
 from app.firebase import init_firebase
 from fake_useragent import UserAgent
 
-# import houses_site_crawler.huurwoningen.service as huurwoningen_service
-# import houses_site_crawler.pararius.service as pararius_service
-import houses_site_crawler.funda.service as funda_service
+
+import app.houses_site_crawler.funda.service as funda_service
 
 init_firebase()
 

@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 import app.modules.auth as auth
-from houses_site_crawler.holland2stay import blueprint
+from app.houses_site_crawler.holland2stay import blueprint
 
 
 def create_app(test_config=None):
