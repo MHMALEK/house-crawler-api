@@ -1,8 +1,8 @@
 import os
 
 from flask import Flask
-import auth
-from check_houses.h2s import holland2stay
+import app.modules.auth as auth
+from houses_site_crawler.holland2stay import blueprint
 
 
 def create_app(test_config=None):
@@ -27,6 +27,6 @@ def create_app(test_config=None):
         pass
 
     app.register_blueprint(auth.bp)
-    app.register_blueprint(holland2stay.bp)
+    app.register_blueprint(blueprint.bp)
 
     return app

@@ -19,8 +19,6 @@ def init_firebase():
         "\\n", "\n"
     )
 
-    print(service_account_info)
-
     # Use the service account key to authenticate
     cred = credentials.Certificate(service_account_info)
 

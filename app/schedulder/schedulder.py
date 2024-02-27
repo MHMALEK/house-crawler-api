@@ -1,6 +1,6 @@
 import schedule
 import time
-from .check_houses.h2s.services import fetch_all_cities_results, fetch_city_names_service
+from ...houses_site_crawler.holland2stay.services import fetch_all_cities_results, fetch_city_names_service
 
 
 
